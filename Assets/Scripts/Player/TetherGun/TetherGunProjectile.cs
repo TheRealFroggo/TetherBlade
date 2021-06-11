@@ -12,7 +12,6 @@ public class TetherGunProjectile : Projectile
     {
         CheckPosition();
         TickLifetime();
-        Debug.Log(Direction);
     }
 
     void CheckPosition()
@@ -34,7 +33,6 @@ public class TetherGunProjectile : Projectile
         tether.transform.position = transform.position;
         tether.transform.rotation = transform.rotation;
         tether.transform.Rotate(0, 0, 90);
-
 
         tether.TetherEndLeft.Direction = -tether.transform.right;
         tether.TetherEndRight.Direction = tether.transform.right;
