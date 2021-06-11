@@ -16,7 +16,7 @@ public class TetherGunRotation : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         Vector3 mousePos3D = m_Camera.ScreenToWorldPoint(mousePos);
 
-        Vector3 LookAtDirection = (mousePos3D - playerPos);
+        Vector3 LookAtDirection = mousePos3D - playerPos;
         float Angle = Mathf.Atan2(LookAtDirection.x, LookAtDirection.y) * Mathf.Rad2Deg - 90.0f;
         Quaternion rotation = Quaternion.AngleAxis(-Angle, Vector3.forward);
 
