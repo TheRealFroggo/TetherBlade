@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 358765175319030594}
   - component: {fileID: 8196165331135042170}
   - component: {fileID: 6445130108284372849}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemySnake
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -148,7 +148,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   BloodSplash: {fileID: 3974715642853095594, guid: d3e864c5f9422124894ced9b00d0d85c,
     type: 3}
-  BloodParticle: {fileID: 0}
+  BloodParticle: {fileID: 3974715642853095594, guid: d3e864c5f9422124894ced9b00d0d85c,
+    type: 3}
   GameManager: {fileID: 0}
 --- !u!114 &6445130108284372849
 MonoBehaviour:
@@ -165,4 +166,5 @@ MonoBehaviour:
   FireRate: 3
   ShotsPerVolley: 1
   SeperationDegrees: 0
-  Player: {fileID: 3974715642853095594, guid: d3e864c5f9422124894ced9b00d0d85c, type: 3}
+  Projectile: {fileID: 3579416145490184663, guid: 980b434b8d655e745a1d540d0e8ffcb4,
+    type: 3}

@@ -14,11 +14,12 @@ public class ShootPlayer : MonoBehaviour
 
     public GameObject Projectile;
 
-    public GameObject Player;
+    private GameObject Player;
 
     void Start()
     {
         FireRateTimer = FireRate;
+        Player = GetComponent<Enemy>().Player;
     }
 
     void Update()
@@ -31,7 +32,10 @@ public class ShootPlayer : MonoBehaviour
         FireRateTimer -= Time.deltaTime;
 
         if (FireRateTimer <= 0)
+        {
             Shoot();
+            FireRateTimer = FireRate;
+        }
     }
 
     void Shoot()
@@ -52,7 +56,7 @@ public class ShootPlayer : MonoBehaviour
     {
         GameObject obj = Instantiate(Projectile);
 
-        obj.transform.position = transform.GetChild(0).transform.position;
+        obj.transform.position = transform.position;
         Vector3 rot = transform.rotation.eulerAngles;
         obj.transform.rotation = Quaternion.Euler(rot);
         obj.GetComponent<Projectile>().Direction = dir;
