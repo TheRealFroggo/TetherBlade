@@ -9,6 +9,13 @@ public class Movement : MonoBehaviour
     [SerializeField]
     GameObject TetherGun;
 
+    [SerializeField]
+    GameObject BloodSplash;
+    [SerializeField]
+    GameObject BloodParticle;
+    [SerializeField]
+    GameManager GameManager;
+
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
 
@@ -34,7 +41,7 @@ public class Movement : MonoBehaviour
     {
         GameObject otherobject = collision.rigidbody.gameObject;
 
-        if (otherobject.tag == "Enemy")
+        if (otherobject.tag == "Enemy" || otherobject.tag == "Obstacle")
             Die();
     }
 
@@ -42,6 +49,26 @@ public class Movement : MonoBehaviour
     {
         rigidBody.velocity = Vector2.zero;
         rigidBody.bodyType = RigidbodyType2D.Static;
-        this.enabled = false;
+
+        SpawnBlood();
+
+        enabled = false;
+        spriteRenderer.enabled = false;
+        TetherGun.GetComponent<TetherGunRotation>().enabled = false;
+        TetherGun.GetComponent<TetherGunShooting>().enabled = false;
+        TetherGun.GetComponent<SpriteRenderer>().enabled = false;
+
+        GameManager.PlayerDied();
+    }
+
+    void SpawnBlood()
+    {
+        GameObject splash = Instantiate(BloodSplash);
+        splash.transform.position = transform.position;
+
+        GameObject blood = Instantiate(BloodParticle);
+        blood.transform.position = transform.position;
+        int randDegree = Random.Range(0, 359);
+        blood.transform.rotation = Quaternion.Euler(0, 0, randDegree);
     }
 }

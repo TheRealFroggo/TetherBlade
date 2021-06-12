@@ -147,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BloodSplash: {fileID: 3974715642853095594, guid: d3e864c5f9422124894ced9b00d0d85c,
     type: 3}
+  BloodParticle: {fileID: 2216853829548927568, guid: ab5f1af5d88223c4b8e91fb649df2c71,
+    type: 3}
 --- !u!114 &4432603254298758702
 MonoBehaviour:
   m_ObjectHideFlags: 0

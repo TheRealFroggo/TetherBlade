@@ -41,7 +41,7 @@ public class TetherGunProjectile : Projectile
         tether.transform.rotation = transform.rotation;
         tether.transform.Rotate(0, 0, 90);
 
-        tether.TetherEndLeft.Direction = -tether.transform.right;
-        tether.TetherEndRight.Direction = tether.transform.right;
+        tether.TetherEndLeft.GetComponent<Projectile>().Direction = -tether.transform.right;
+        tether.TetherEndRight.GetComponent<Projectile>().Direction = tether.transform.right;
     }
 }

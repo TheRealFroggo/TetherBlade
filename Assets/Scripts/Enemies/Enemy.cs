@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public bool isTethered {get; set;}
+    public bool isTethered { get; set; }
     public GameObject BloodSplash;
+    public GameObject BloodParticle;
 
     private Rigidbody2D Rigidbody;
 
@@ -25,22 +26,22 @@ public class Enemy : MonoBehaviour
     {
         GameObject otherObject = collision.rigidbody.gameObject;
 
-        if (otherObject.tag == "Obstacle")
-        {
-            Die();
-        }
-
         if (isTethered)
         {
-            Die();
+            if (otherObject.tag == "Obstacle" || otherObject.tag == "Enemy" || otherObject.tag == "Wall")
+            {
+                Die();
+            }
         }
     }
 
     void Die()
     {
-        GameObject blood = Instantiate(BloodSplash);
-        blood.transform.position = transform.position;
+        GameObject splash = Instantiate(BloodSplash);
+        splash.transform.position = transform.position;
 
+        GameObject blood = Instantiate(BloodParticle);
+        blood.transform.position = transform.position;
         int randDegree = Random.Range(0, 359);
         blood.transform.rotation = Quaternion.Euler(0, 0, randDegree);
 

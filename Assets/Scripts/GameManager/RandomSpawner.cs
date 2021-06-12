@@ -16,16 +16,18 @@ public class RandomSpawner : MonoBehaviour
     public GameObject Enemy;
     public GameObject Player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    GameManager GameManager;
 
-    // Update is called once per frame
     void Update()
     {
+        UpdatePosition();
         CheckSpawnEnemy();
+    }
+
+    void UpdatePosition()
+    {
+        transform.position = Player.transform.position;
     }
 
     void CheckSpawnEnemy()
@@ -43,6 +45,7 @@ public class RandomSpawner : MonoBehaviour
     void SpawnNewEnemy()
     {
         GameObject newEnemy = Instantiate(Enemy);
+
         ChasePlayer chaser = newEnemy.GetComponent<ChasePlayer>();
         chaser.Player = Player;
 
