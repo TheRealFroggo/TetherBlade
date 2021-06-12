@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TetherGunProjectile : Projectile
+public class TetherGunProjectile : MonoBehaviour
 {
     public float CloseEnough;
     public Tether TetherPrefab;
@@ -11,14 +11,13 @@ public class TetherGunProjectile : Projectile
     void Update()
     {
         CheckPosition();
-        TickLifetime();
     }
 
     void CheckPosition()
     {
         Vector3 pos = transform.position;
 
-        //If true, that means the position of bullet is within 1 unit of MousePosition
+        //If true, that means the position of bullet is within CloseEnough unit of MousePosition
         if (Mathf.Abs(pos.x - MousePos.x) < CloseEnough &&
             Mathf.Abs(pos.y - MousePos.y) < CloseEnough)
         {

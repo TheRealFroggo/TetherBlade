@@ -31,7 +31,7 @@ public class TetherGunShooting : MonoBehaviour
     private ActiveState State = ActiveState.ready;
 
     [Header("Projectile")]
-    public TetherGunProjectile WeaponProjectile;
+    public GameObject WeaponProjectile;
 
     void Start()
     {
@@ -89,15 +89,20 @@ public class TetherGunShooting : MonoBehaviour
 
     void SpawnProjectile()
     {
-        TetherGunProjectile projectile = Instantiate(WeaponProjectile);
+        GameObject obj = Instantiate(WeaponProjectile);
+        TetherGunProjectile tetherProjectile = obj.GetComponent<TetherGunProjectile>();
+        Projectile projectile = obj.GetComponent<Projectile>();
 
-        projectile.MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        projectile.transform.position = transform.GetChild(0).transform.position;
-
+        obj.transform.position = transform.GetChild(0).transform.position;
         Vector3 rot = transform.rotation.eulerAngles;
-        projectile.transform.rotation = Quaternion.Euler(rot);
+        obj.transform.rotation = Quaternion.Euler(rot);
 
+        if (!tetherProjectile)
+            return;
+        tetherProjectile.MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (!projectile)
+            return;
         projectile.Direction = transform.right;
     }
 }
