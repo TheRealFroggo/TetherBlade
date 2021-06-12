@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
     {
         GameObject otherobject = collision.rigidbody.gameObject;
 
-        if (otherobject.tag == "Enemy" || otherobject.tag == "Obstacle")
+        if (otherobject.tag == "Enemy" || otherobject.tag == "Obstacle" || otherobject.tag == "Projectile")
             Die();
     }
 

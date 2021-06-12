@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2727185101465051378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0500689, y: 2.8307734, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -145,8 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12ba5d549ef0ea4b8c9a32b62b1f743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   BloodSplash: {fileID: 3974715642853095594, guid: d3e864c5f9422124894ced9b00d0d85c,
     type: 3}
+  BloodParticle: {fileID: 0}
+  GameManager: {fileID: 0}
 --- !u!114 &6445130108284372849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,4 +164,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireRate: 3
   ShotsPerVolley: 1
+  SeperationDegrees: 0
   Player: {fileID: 3974715642853095594, guid: d3e864c5f9422124894ced9b00d0d85c, type: 3}

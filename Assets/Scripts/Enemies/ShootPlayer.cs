@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ShootPlayer : MonoBehaviour
 {
+    [Tooltip("How many volleys fired per second")]
     public float FireRate;
     private float FireRateTimer;
+    [Tooltip("How many shots in one volley")]
     public float ShotsPerVolley;
+    [Tooltip("How many degrees between each shot in the volley")]
+    public float SeperationDegrees;
+
+    public GameObject Projectile;
 
     public GameObject Player;
 
@@ -33,7 +39,22 @@ public class ShootPlayer : MonoBehaviour
         Vector3 pos = transform.position;
         Vector3 playerPos = Player.transform.position;
 
-        Vector3 direction = playerPos - pos;
+        Vector2 direction = playerPos - pos;
         direction.Normalize();
+
+        for(int i = 0; i < ShotsPerVolley; i++)
+        {
+            SpawnProjectile(direction);
+        }
+    }
+
+    void SpawnProjectile(Vector2 dir)
+    {
+        GameObject obj = Instantiate(Projectile);
+
+        obj.transform.position = transform.GetChild(0).transform.position;
+        Vector3 rot = transform.rotation.eulerAngles;
+        obj.transform.rotation = Quaternion.Euler(rot);
+        obj.GetComponent<Projectile>().Direction = dir;
     }
 }
