@@ -5,16 +5,6 @@ using UnityEngine;
 public class TetherChildProjectile : MonoBehaviour
 {
     public Tether Tether;
-    
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
