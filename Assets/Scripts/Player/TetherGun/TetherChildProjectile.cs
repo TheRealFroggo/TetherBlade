@@ -11,11 +11,20 @@ public class TetherChildProjectile : MonoBehaviour
         if (!Tether.Object1)
         {
             Tether.Object1 = collider.gameObject;
+            TetherEnemy(Tether.Object1);
         }
         else
         {
             Tether.Object2 = collider.gameObject;
+            TetherEnemy(Tether.Object2);
         }
         Destroy(gameObject);
+    }
+
+    void TetherEnemy(GameObject obj)
+    {
+        Enemy enemy = obj.gameObject.GetComponent<Enemy>();
+        if (enemy)
+            enemy.isTethered = true;
     }
 }
