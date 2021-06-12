@@ -9,7 +9,13 @@ public class RandomSpawner : MonoBehaviour
     public int NumEnemiesToSpawnAtOnce;
 
     [Tooltip("Time between spawning new enemies, in seconds")]
-    public float SpawnRate;
+    public float SpawnInterval;
+
+    [Tooltip("Initial time between spawning new enemies")]
+    public float InitialSpawnInterval;
+
+    [Tooltip("Minimum time between spawning new enemies")]
+    public float MinSpawnInterval;
 
     [Tooltip("How quickly the spawn rate increases")]
     public float SpawnAccelerator;
@@ -25,6 +31,10 @@ public class RandomSpawner : MonoBehaviour
         SpawnNewEnemies();
     }
 
+    public void Reset()
+    {
+        SpawnInterval = InitialSpawnInterval;
+    }
     void Update()
     {
         UpdatePosition();
@@ -47,11 +57,10 @@ public class RandomSpawner : MonoBehaviour
         var now = Time.time;
         var elapsed = now - LastSpawnTime;
 
-        if (elapsed > SpawnRate)
+        if (elapsed > SpawnInterval)
         {
             LastSpawnTime = now;
             AdjustSpawnRate();
-            SpawnRate *= SpawnAccelerator;
             return true;
         }
         return false;
@@ -59,7 +68,7 @@ public class RandomSpawner : MonoBehaviour
 
     void AdjustSpawnRate()
     {
-        SpawnRate = Mathf.Clamp(SpawnAccelerator * SpawnRate, 1.0f, 5.0f);
+        SpawnInterval = Mathf.Clamp(SpawnAccelerator * SpawnInterval, MinSpawnInterval, InitialSpawnInterval);
     }
 
     void SpawnNewEnemies()

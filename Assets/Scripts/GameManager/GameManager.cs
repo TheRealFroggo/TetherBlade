@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         Player.GetComponent<Movement>().Restart();
         KillAllEnemies();
+        RandomSpawner.Reset();
         Score = 0;
         UIManager.UpdateScore();
     }
