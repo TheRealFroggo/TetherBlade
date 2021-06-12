@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
 
+    private Vector2 MovementVector;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -32,8 +34,8 @@ public class Movement : MonoBehaviour
 
     void DoMovement()
     {
-        Vector2 movementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rigidBody.velocity = movementVector * MovementSpeed;
+        MovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        rigidBody.velocity = MovementVector * MovementSpeed;
         spriteRenderer.flipX = TetherGun.GetComponent<TetherGunRotation>().isGunFlipped;
     }
 
@@ -47,6 +49,7 @@ public class Movement : MonoBehaviour
 
     void Die()
     {
+        MovementVector = Vector2.zero;
         rigidBody.velocity = Vector2.zero;
         rigidBody.bodyType = RigidbodyType2D.Static;
 
@@ -70,5 +73,17 @@ public class Movement : MonoBehaviour
         blood.transform.position = transform.position;
         int randDegree = Random.Range(0, 359);
         blood.transform.rotation = Quaternion.Euler(0, 0, randDegree);
+    }
+
+    public void Restart()
+    {
+        transform.position = Vector3.zero;
+        rigidBody.bodyType = RigidbodyType2D.Dynamic;
+
+        enabled = true;
+        spriteRenderer.enabled = true;
+        TetherGun.GetComponent<TetherGunRotation>().enabled = true;
+        TetherGun.GetComponent<TetherGunShooting>().enabled = true;
+        TetherGun.GetComponent<SpriteRenderer>().enabled = true;
     }
 }

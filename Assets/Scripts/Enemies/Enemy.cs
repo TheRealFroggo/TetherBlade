@@ -5,11 +5,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public bool isTethered { get; set; }
+
+    public GameObject Player;
     public GameObject BloodSplash;
     public GameObject BloodParticle;
 
     private Rigidbody2D Rigidbody;
 
+    public GameManager GameManager;
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -35,7 +38,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         GameObject splash = Instantiate(BloodSplash);
         splash.transform.position = transform.position;
@@ -44,6 +47,8 @@ public class Enemy : MonoBehaviour
         blood.transform.position = transform.position;
         int randDegree = Random.Range(0, 359);
         blood.transform.rotation = Quaternion.Euler(0, 0, randDegree);
+
+        GameManager.AddScore();
 
         Destroy(gameObject);
     }

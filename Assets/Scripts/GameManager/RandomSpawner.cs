@@ -44,12 +44,13 @@ public class RandomSpawner : MonoBehaviour
 
     void SpawnNewEnemy()
     {
-        GameObject newEnemy = Instantiate(Enemy);
+        GameObject obj = Instantiate(Enemy);
 
-        ChasePlayer chaser = newEnemy.GetComponent<ChasePlayer>();
-        chaser.Player = Player;
+        Enemy enemy = obj.GetComponent<Enemy>();
+        enemy.GameManager = GameManager;
+        enemy.Player = Player;
 
         int whichSpawnPoint = Random.Range(0, 11);
-        newEnemy.transform.position = SpawnPoints[whichSpawnPoint].position;
+        obj.transform.position = SpawnPoints[whichSpawnPoint].position;
     }
 }

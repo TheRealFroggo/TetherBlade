@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class ChasePlayer : MonoBehaviour
 {
-    public GameObject Player;
     public float MovementSpeed;
 
     private Rigidbody2D Rigidbody;
     private SpriteRenderer SpriteRenderer;
+    private Enemy Enemy;
+
+    private GameObject Player;
 
     void Start()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Rigidbody = GetComponent<Rigidbody2D>();
+        Enemy = GetComponent<Enemy>();
+        Player = Enemy.Player;
     }
     void FixedUpdate()
     {
