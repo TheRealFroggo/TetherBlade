@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6576193858780705877}
   - component: {fileID: 6691973525025710812}
   - component: {fileID: 7205148261893320904}
-  - component: {fileID: 5268743886392554194}
   - component: {fileID: 1410022011154586226}
   m_Layer: 10
   m_Name: TetherProjectile
@@ -123,20 +122,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &5268743886392554194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135099003152346739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af98f35436809c439fe01552a285054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProjectileSpeed: 10
-  Lifetime: 1
 --- !u!114 &1410022011154586226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06b1f250df6bf644bb07c364a10d527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileSpeed: 10
+  Lifetime: 0.5
   CloseEnough: 0.1
   TetherPrefab: {fileID: 3183694778713404009, guid: b1bbcade01f4fba4ca5917aae72b14d2,
     type: 3}

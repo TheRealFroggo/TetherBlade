@@ -11,13 +11,13 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody2D Rigidbody;
 
-    void Start()
+    virtual protected void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         SetInitialVelocity();
     }
 
-    void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         TickLifetime();
         UpdateRotation();
@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void Die()
+    virtual protected void Die()
     {
         Destroy(gameObject);
     }

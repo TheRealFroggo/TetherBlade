@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TetherGunProjectile : MonoBehaviour
+public class TetherGunProjectile : Projectile
 {
     public float CloseEnough;
     public Tether TetherPrefab;
     public Vector2 MousePos;
 
-    void FixedUpdate()
+    override protected void FixedUpdate()
     {
+        base.FixedUpdate();
         CheckPosition();
     }
 
@@ -25,7 +26,7 @@ public class TetherGunProjectile : MonoBehaviour
         }
     }
 
-    void Die()
+    override protected void Die()
     {
         SpawnChildren();
 
