@@ -359,7 +359,8 @@ MonoBehaviour:
   - {fileID: 36493502}
   - {fileID: 1834782795}
   LastSpawnTime: 0
-  SpawnRate: 10
+  NumEnemiesToSpawnAtOnce: 3
+  SpawnRate: 5
   SpawnAccelerator: 0.9
   Enemy: {fileID: 4432603254298758697, guid: 3993ad88917da274caac62c8865e9c53, type: 3}
   Player: {fileID: 1911471206}
@@ -1293,7 +1294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 12.6, y: -44.9}
+  m_AnchoredPosition: {x: 12.599976, y: -44.899994}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &970045676
