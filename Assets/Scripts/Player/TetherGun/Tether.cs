@@ -16,7 +16,6 @@ public class Tether : MonoBehaviour
     {
         if (!Joint)
             CheckCreateJoint();
-        
     }
 
     void CheckCreateJoint()
