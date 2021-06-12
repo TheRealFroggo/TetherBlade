@@ -35,9 +35,8 @@ public class Projectile : MonoBehaviour
         Rigidbody.angularVelocity = 0;
         Vector2 direction = Rigidbody.velocity.normalized;
         float angle = -1 * (Mathf.Atan2(direction.x, direction.y) * 180 / Mathf.PI) - 90;
+
         transform.rotation = Quaternion.Euler(0, 0, angle);
-        Debug.Log(angle);
-        //transform.rotation = Quaternion.LookRotation(direction);
     }
 
     protected void TickLifetime()
