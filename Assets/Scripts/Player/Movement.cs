@@ -50,7 +50,6 @@ public class Movement : MonoBehaviour
     void Die()
     {
         MovementVector = Vector2.zero;
-        rigidBody.velocity = Vector2.zero;
         rigidBody.bodyType = RigidbodyType2D.Static;
 
         SpawnBlood();
