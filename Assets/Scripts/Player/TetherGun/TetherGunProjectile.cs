@@ -8,7 +8,7 @@ public class TetherGunProjectile : MonoBehaviour
     public Tether TetherPrefab;
     public Vector2 MousePos;
 
-    void Update()
+    void FixedUpdate()
     {
         CheckPosition();
     }
@@ -21,11 +21,18 @@ public class TetherGunProjectile : MonoBehaviour
         if (Mathf.Abs(pos.x - MousePos.x) < CloseEnough &&
             Mathf.Abs(pos.y - MousePos.y) < CloseEnough)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
-    void OnDestroy()
+    void Die()
+    {
+        SpawnChildren();
+
+        Destroy(gameObject);
+    }
+
+    void SpawnChildren()
     {
         Tether tether = Instantiate(TetherPrefab);
 

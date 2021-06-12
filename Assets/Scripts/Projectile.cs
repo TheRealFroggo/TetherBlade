@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
         SetInitialVelocity();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         TickLifetime();
         UpdateRotation();
@@ -41,11 +41,16 @@ public class Projectile : MonoBehaviour
 
     protected void TickLifetime()
     {
-        Lifetime -= Time.deltaTime;
+        Lifetime -= Time.fixedDeltaTime;
 
         if (Lifetime <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
