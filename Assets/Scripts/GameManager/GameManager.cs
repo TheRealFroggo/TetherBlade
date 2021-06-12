@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Player.GetComponent<Movement>().Restart();
-        Score = 0;
         KillAllEnemies();
+        Score = 0;
         UIManager.UpdateScore();
     }
     public void Quit()
