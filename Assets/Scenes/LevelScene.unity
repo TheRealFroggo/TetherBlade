@@ -359,8 +359,8 @@ MonoBehaviour:
   - {fileID: 36493502}
   - {fileID: 1834782795}
   LastSpawnTime: 0
-  NumEnemiesToSpawnAtOnce: 3
-  SpawnInterval: 0
+  NumSpawnedEachTime: 3
+  NumSpawnedAtStart: 5
   InitialSpawnInterval: 5
   MinSpawnInterval: 2
   SpawnAccelerator: 0.95

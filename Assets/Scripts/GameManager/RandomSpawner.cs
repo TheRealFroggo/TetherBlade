@@ -9,8 +9,7 @@ public class RandomSpawner : MonoBehaviour
     public int NumSpawnedEachTime;
     public int NumSpawnedAtStart;
 
-    [Tooltip("Time between spawning new enemies, in seconds")]
-    public float SpawnInterval;
+    float SpawnInterval;
 
     [Tooltip("Initial time between spawning new enemies")]
     public float InitialSpawnInterval;
