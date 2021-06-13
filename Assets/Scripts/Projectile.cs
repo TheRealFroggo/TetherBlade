@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
 
     public float Lifetime;
 
+    public bool ShouldDestroyOnCollision = false;
+
     private Rigidbody2D Rigidbody;
 
     virtual protected void Start()
@@ -52,5 +54,13 @@ public class Projectile : MonoBehaviour
     virtual protected void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (ShouldDestroyOnCollision)
+        {
+            Destroy(gameObject);
+        }
     }
 }

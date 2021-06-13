@@ -136,3 +136,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileSpeed: 5
   Lifetime: 5
+  ShouldDestroyOnCollision: 1
