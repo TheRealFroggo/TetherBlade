@@ -163,8 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16222ada088d8d54fbb4a69fa8e3437c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 3
+  MovementSpeed: 1
+  StrafeDistance: 7.5
+  FireRate: 0.5
   ShotsPerVolley: 1
-  SeperationDegrees: 0
+  SeperationDegrees: 30
   Projectile: {fileID: 3579416145490184663, guid: 980b434b8d655e745a1d540d0e8ffcb4,
     type: 3}
