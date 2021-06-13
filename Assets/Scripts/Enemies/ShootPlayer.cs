@@ -48,17 +48,29 @@ public class ShootPlayer : MonoBehaviour
 
         for(int i = 0; i < ShotsPerVolley; i++)
         {
-            SpawnProjectile(direction);
+            SpawnProjectile(direction, i);
         }
     }
 
-    void SpawnProjectile(Vector2 dir)
+    void SpawnProjectile(Vector2 dir, int num)
     {
+        float totalDegrees = SeperationDegrees * ShotsPerVolley;
+        float currentDegrees = num * SeperationDegrees - totalDegrees / 4;
+
+        float theta = Mathf.Deg2Rad * currentDegrees;
+
+        float cs = Mathf.Cos(theta);
+        float sn = Mathf.Sin(theta);
+        Vector2 newDir;
+
+        newDir.x = dir.x * cs - dir.y * sn;
+        newDir.y = dir.x * sn + dir.y * cs;
+
         GameObject obj = Instantiate(Projectile);
 
         obj.transform.position = transform.position;
         Vector3 rot = transform.rotation.eulerAngles;
         obj.transform.rotation = Quaternion.Euler(rot);
-        obj.GetComponent<Projectile>().Direction = dir;
+        obj.GetComponent<Projectile>().Direction = newDir;
     }
 }
