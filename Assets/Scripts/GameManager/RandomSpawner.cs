@@ -20,7 +20,7 @@ public class RandomSpawner : MonoBehaviour
     [Tooltip("How quickly the spawn rate increases")]
     public float SpawnAccelerator;
 
-    public GameObject Enemy;
+    public List<GameObject> Enemies;
     public GameObject Player;
 
     [SerializeField]
@@ -79,7 +79,9 @@ public class RandomSpawner : MonoBehaviour
 
     void SpawnNewEnemy()
     {
-        GameObject obj = Instantiate(Enemy);
+        var percentile = Random.Range(0.0f, 100.0f);
+        var whoToSpawn = percentile < 75.0 ? 0 : 1; // Boar 75% of time, Snake 25% of time
+        GameObject obj = Instantiate(Enemies[whoToSpawn]);
 
         Enemy enemy = obj.GetComponent<Enemy>();
         enemy.GameManager = GameManager;
