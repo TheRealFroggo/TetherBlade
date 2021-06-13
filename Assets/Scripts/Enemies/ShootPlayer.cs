@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShootPlayer : MonoBehaviour
 {
+    public float MovementSpeed;
+    public float StrafeDistance;
     [Tooltip("How many volleys fired per second")]
     public float FireRate;
     private float FireRateTimer;
@@ -15,16 +17,45 @@ public class ShootPlayer : MonoBehaviour
     public GameObject Projectile;
 
     private GameObject Player;
+    private Rigidbody2D Rigidbody;
+    private SpriteRenderer SpriteRenderer;
 
     void Start()
     {
         FireRateTimer = FireRate;
         Player = GetComponent<Enemy>().Player;
+        Rigidbody = GetComponent<Rigidbody2D>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        DoMovement();
         TickFireRate();
+    }
+
+    void DoMovement()
+    {
+        Vector3 pos = transform.position;
+        Vector3 playerPos = Player.transform.position;
+
+        Vector3 direction = playerPos - pos;
+
+        Debug.Log(direction.sqrMagnitude + " " + StrafeDistance);
+        if (direction.sqrMagnitude >= StrafeDistance)
+        {
+            direction.Normalize();
+            Rigidbody.velocity = direction * MovementSpeed;
+        }
+        else
+        {
+            Rigidbody.velocity = Vector2.zero;
+        }
+
+        if (direction.x >= 0)
+            SpriteRenderer.flipX = false;
+        else
+            SpriteRenderer.flipX = true;
     }
 
     void TickFireRate()
@@ -54,10 +85,11 @@ public class ShootPlayer : MonoBehaviour
 
     void SpawnProjectile(Vector2 dir, int num)
     {
-        float totalDegrees = SeperationDegrees * ShotsPerVolley;
-        float currentDegrees = num * SeperationDegrees - totalDegrees / 4;
+        float totalDegrees = SeperationDegrees * (ShotsPerVolley - 1);
+        float angleOfFirstShot = -totalDegrees / 2;
+        float angleOfThisShot = angleOfFirstShot + num * SeperationDegrees;
 
-        float theta = Mathf.Deg2Rad * currentDegrees;
+        float theta = Mathf.Deg2Rad * angleOfThisShot;
 
         float cs = Mathf.Cos(theta);
         float sn = Mathf.Sin(theta);
