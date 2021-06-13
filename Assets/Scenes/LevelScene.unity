@@ -364,7 +364,9 @@ MonoBehaviour:
   InitialSpawnInterval: 5
   MinSpawnInterval: 2
   SpawnAccelerator: 0.95
-  Enemy: {fileID: 4432603254298758697, guid: 3993ad88917da274caac62c8865e9c53, type: 3}
+  Enemies:
+  - {fileID: 4432603254298758697, guid: 3993ad88917da274caac62c8865e9c53, type: 3}
+  - {fileID: 2727185101465051378, guid: 1582ed5a5e3eb364d8a84d63a6e1d957, type: 3}
   Player: {fileID: 1911471206}
   GameManager: {fileID: 2025466691}
 --- !u!4 &131272344
