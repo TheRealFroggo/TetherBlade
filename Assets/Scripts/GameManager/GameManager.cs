@@ -39,10 +39,16 @@ public class GameManager : MonoBehaviour
 
     void KillAllEnemies()
     {
-        GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject obj in allObjects)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject obj in enemies)
         {
             obj.GetComponent<Enemy>().Die();
+        }
+
+        GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
+        foreach (GameObject obj in projectiles)
+        {
+            Destroy(obj);
         }
     }
 }

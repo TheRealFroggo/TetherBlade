@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7964787984705471518}
   - component: {fileID: 3183694778713404009}
   - component: {fileID: -6127808540572951933}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tether
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 2892382304873346023}
   - component: {fileID: 2960815361401153457}
   - component: {fileID: 8345158470843117789}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TetherEndsLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 9147892784581358129}
   - component: {fileID: 1608828711748498648}
   - component: {fileID: 4203980339355868198}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TetherEndsRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

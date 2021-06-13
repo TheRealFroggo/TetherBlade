@@ -41,7 +41,6 @@ public class ShootPlayer : MonoBehaviour
 
         Vector3 direction = playerPos - pos;
 
-        Debug.Log(direction.sqrMagnitude + " " + StrafeDistance);
         if (direction.sqrMagnitude >= StrafeDistance)
         {
             direction.Normalize();
