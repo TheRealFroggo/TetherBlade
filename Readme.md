@@ -1,4 +1,4 @@
-###Tetherblade
+##Tetherblade
 #A Twinstick shooter, with physics
 
 link to the itch.io page
